@@ -10,7 +10,12 @@ Current version is being able to parse "State" packets from the AC, allowing us 
 The AC itself is TCP listening on 56800, sending data when a connection is established and every few seconds when the AC is powered on.
 
 ## How to run?
-Install python *construct* library using `pip install construct`.
+Install prerequisites using
+
+    pip install construct
+    pip install hexdump
+    pip install pytest pytest-snapshot
+
 Change the AC's IP address in the `test.py` file (MAC is not required right now) and run it.
 
 ## What about Haier's cloud service?

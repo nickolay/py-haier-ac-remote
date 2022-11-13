@@ -75,4 +75,6 @@ def parse_state(resp):
 
 def parse_resp(data):
     resp = resp_struct.parse(data)
+    mac = ''.join(chr(b) for b in resp.mac_address)
+    print(f"start={resp.start}, seq={resp.seq}, cmd_length={resp.cmd_length}, cmd_type={resp.cmd.type}, mac={mac}")
     return parse_state(resp)
