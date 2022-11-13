@@ -20,3 +20,14 @@ def test_parse(case_dir: Path, snapshot):
 
     output = parse_resp(d)
     snapshot.assert_match(repr(output), case_file.with_suffix('.out'))
+
+
+def test_command_serialization(snapshot):
+    snapshot.snapshot_dir = Path('tests') / 'commands'
+    from context import command_req, Commands
+
+    case_file = snapshot.snapshot_dir / 'on'
+    #d = hexdump.restore(case_file.with_suffix('.txt').read_text())
+    d = command_req(mac="04FA83FFFFFF", seq=57, cmd_data=Commands.on)
+    snapshot.assert_match(hexdump.hexdump(d, result='return'), case_file.with_suffix('.txt'))
+    snapshot.assert_match(d, case_file.with_suffix('.bin'))
