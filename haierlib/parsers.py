@@ -49,14 +49,10 @@ resp_struct = construct.Struct(
 # TODO asserts, verify start magic, verify checksum
 # TODO check execute() on parsers.ts for verifications
 
-def parse_state(resp, state=None):
+def parse_state(resp):
     if resp.cmd.type != 34:
         return
     
-    # Create a new state
-    if not state:
-        state = State()
-
     # Get the constructed data
     state_st = state_struct.parse(get_cmd_struct(resp.cmd_length).build({
         'data_magic': resp.cmd.data_magic, 
@@ -64,8 +60,7 @@ def parse_state(resp, state=None):
         'data': resp.cmd.data
     }))
 
-    # Adjust and convert to State object
-    state.update(
+    state = State(
         current_temp=state_st.current_temp,
         target_temp=state_st.target_temp + 16,
         fan_speed=FanSpeed(state_st.fan_speed),
