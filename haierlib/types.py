@@ -3,6 +3,7 @@ from enum import Enum
 class Limits(Enum):
     OFF = 0
     ONLY_VERTICAL = 1
+    UNKNOWN_3 = 3
 
 class FanSpeed(Enum):
     MAX = 0
