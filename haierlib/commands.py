@@ -13,9 +13,11 @@ request_struct = construct.Struct(
 
 class Commands:
     on = dehex('ff ff 0a 00 00 00 00 00 00 01 4d 02 5a')
+    off = dehex('ff ff 0a 00 00 00 00 00 00 01 4d 03 5b')
 
-def command_req(mac, seq, cmd_data):
-    return request_struct.build({"mac": mac, 'seq': seq}) + \
-        construct.Int32ub.build(len(cmd_data)) + \
-            cmd_data
+    @staticmethod
+    def build_request(mac, seq, cmd_data):
+        return request_struct.build({"mac": mac, 'seq': seq}) + \
+            construct.Int32ub.build(len(cmd_data)) + \
+                cmd_data
 

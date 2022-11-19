@@ -6,4 +6,4 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 
 import haierlib
 from haierlib.parsers import parse_resp
-from haierlib.commands import command_req, Commands
+from haierlib.commands import Commands
