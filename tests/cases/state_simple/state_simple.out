@@ -1,0 +1,1 @@
+State(current_temp=21, target_temp=25, fan_speed=<FanSpeed.MAX: 0>, mode=<Mode.HEAT: 2>, health=False, limits=<Limits.UNKNOWN_3: 3>, power=False)
